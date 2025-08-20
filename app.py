@@ -31,7 +31,7 @@ def register():
     
     
     if User.query.filter_by(Email = User_data.get("Email")).all():
-        return jsonify({"Err":"User already exits"}), 404
+        return jsonify({"Err":"User already exits"})
     
     
     
@@ -93,6 +93,7 @@ def edit():
     user_details.Age = updated_details["Age"]
     db.session.commit()
     return jsonify({
+        "Message":"User details edited!",
         "Name": user_details.Name,
         "Email": user_email,
         "Age":user_details.Age
